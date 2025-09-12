@@ -17,14 +17,20 @@ html, body, #root {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 500px;
+  width: 850px;
   height: 400px;
   transform: translate(-50%, -50%);
   border: 2px dashed #bbb;
+  color:black;
   z-index: 2;
   background: #fff;
 }
 
+.center-content {
+  padding: 10px;
+}
+
+/* Vertical lines */
 .vertical {
   position: absolute;
   text-align: center;
@@ -32,16 +38,24 @@ html, body, #root {
   border-radius: 8px;
   font-weight: bold;
   z-index: 1;
-  animation: vertical-move-btt 10s linear infinite;
-  transform-origin: bottom;
-  left: 0;
-  opacity: 0;
   writing-mode: vertical-rl;
   letter-spacing: 2px;
-  white-space: nowrap;      /* Keep words in one line vertically */
+  white-space: nowrap;
   padding: 10px 0px 10px 0px;
+  opacity: 0;
 }
 
+/* Bottom to Top */
+.btt {
+  animation: vertical-move-btt 15s linear infinite;
+  transform-origin: bottom;
+}
+
+/* Top to Bottom */
+.ttb {
+  animation: vertical-move-ttb 15s linear infinite;
+  transform-origin: top;
+}
 
 @keyframes vertical-move-btt {
   0% {
@@ -57,31 +71,29 @@ html, body, #root {
   }
   100% {
     top: -200vh;
-    opacity: 1;
+    opacity: 0;
   }
 }
 
-.v1 {
-  left: 5vw;
-  animation-delay: 0s;
+@keyframes vertical-move-ttb {
+  0% {
+    top: -100vh;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    top: 100vh;
+    opacity: 1;
+  }
+  100% {
+    top: 200vh;
+    opacity: 0;
+  }
 }
 
-.v2 {
-  left:7.5vw;
-  animation-delay: 1s;
-}
-
-.v3 {
-  left: 85vw;
-  animation-delay: 2s;
-}
-
-.v4 {
-  left: 87.5vw;
-  animation-delay: 3s;
-}
-
-
+/* Horizontal lines */
 .horizontal {
   position: absolute;
   text-align: center;
@@ -89,32 +101,23 @@ html, body, #root {
   border-radius: 8px;
   font-weight: bold;
   z-index: 1;
-  animation: horizontal-move-rtl 30s linear infinite;
-  transform-origin: left;
-  top: 0;
-  opacity: 0;
   writing-mode: horizontal-tb;
   letter-spacing: 2px;
   white-space: nowrap;
   padding: 0px 10px 0px 10px;
+  opacity: 0;
 }
 
-.h1 {
-  top: 0vh;
-  animation-delay: 0s;
-}
-.h2 {
-  top: 5vh;
-  animation-delay: 1s;
-}
-.h3 {
-  top: 85vh;
-  animation-delay: 2s;
+/* Right to Left */
+.rtl {
+  animation: horizontal-move-rtl 15s linear infinite;
+  transform-origin: left;
 }
 
-.h4 {
-  top: 90vh;
-  animation-delay: 3s;
+/* Left to Right */
+.ltr {
+  animation: horizontal-move-ltr 15s linear infinite;
+  transform-origin: right;
 }
 
 @keyframes horizontal-move-rtl {
@@ -134,3 +137,39 @@ html, body, #root {
     opacity: 0;
   }
 }
+
+@keyframes horizontal-move-ltr {
+  0% {
+    left: -100vw;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  90% {
+    left: 100vw;
+    opacity: 1;
+  }
+  100% {
+    left: 200vw;
+    opacity: 0;
+  }
+}
+
+/* Positioning for verticals */
+.v1 { left: 5.5vw;  animation-delay: 0s; }
+.v2 { left: 8vw; animation-delay: 1s; }
+.v3 { left: 10.5vw;  animation-delay: 2s; }
+.v4 { left: 13vw;animation-delay: 3s; }
+.v5 { left: 82.5vw;animation-delay: 3s; }
+.v6 { left: 85vw;  animation-delay: 2s; }
+.v7 { left: 87.5vw;animation-delay: 1s; }
+.v8 { left: 90vw;  animation-delay: 0s; }
+
+/* Positioning for horizontals */
+.h1 { top: 0vh;   animation-delay: 0s; }
+.h2 { top: 5vh;   animation-delay: 1s; }
+.h3 { top: 10vh;  animation-delay: 2s; }
+.h4 { top: 80vh;  animation-delay: 2s; }
+.h5 { top: 85vh;  animation-delay: 1s; }
+.h6 { top: 90vh;  animation-delay: 0s; }
